@@ -1,0 +1,72 @@
+/**
+ * Layout
+ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html {
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    background-color: #535c6b;
+}
+
+/**
+ * Common
+ */
+
+.ui-element {
+    margin-bottom: 10px;
+}
+
+/**
+ * CheckBox
+ */
+
+.checkbox-track {
+    --track-width: 40px;
+
+    width: var(--track-width);
+    height: 14px;
+    border-radius: 19px;
+    position: relative;
+    background-color: #0d2628;
+
+    cursor: pointer;
+}
+
+.checkbox-track.checked > .checkbox-wrapper {
+    transform: translate(calc(var(--track-width) / 2), 0);
+}
+
+.checkbox-wrapper {
+    border: 3px solid #4da295;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: -3px;
+    left: 0;
+    background-color: #282e3a;
+
+    transition: transform .1s ease-out;
+    transform: translate(0, 0);
+}
+
+.checkbox-wrapper > input {
+    display: none;
+}

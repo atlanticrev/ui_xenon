@@ -1,4 +1,16 @@
 /**
+ * Colors
+ */
+
+:root {
+    --cyan: #4ee3c3;
+    --light-gray: #535c6b;
+    --dark-gray: #252d38;
+    --deep-dark-gray: #0d2628;
+    --black: #000;
+}
+
+/**
  * Layout
  */
 
@@ -22,7 +34,7 @@ body {
     width: 100%;
     height: 100%;
     padding: 50px;
-    background-color: #535c6b;
+    background-color: var(--light-gray);
 }
 
 /**
@@ -44,7 +56,7 @@ body {
     height: 14px;
     border-radius: 19px;
     position: relative;
-    background-color: #0d2628;
+    background-color: var(--deep-dark-gray);
 
     cursor: pointer;
 }
@@ -54,14 +66,14 @@ body {
 }
 
 .checkbox-wrapper {
-    border: 3px solid #4da295;
+    border: 3px solid var(--cyan);
     width: 20px;
     height: 20px;
     border-radius: 10px;
     position: absolute;
     top: -3px;
     left: 0;
-    background-color: #282e3a;
+    background-color: var(--dark-gray);
 
     transition: transform .1s ease-out;
     transform: translate(0, 0);
@@ -69,4 +81,51 @@ body {
 
 .checkbox-wrapper > input {
     display: none;
+}
+
+/**
+ * Player
+ */
+
+.player {
+    --progress: 30%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 272px;
+    height: 120px;
+    border-radius: 10px;
+    background-color: var(--dark-gray);
+}
+
+.player > .player-track {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--cyan) 0%, var(--cyan) var(--progress), var(--black) var(--progress), var(--black) 100%);
+
+    cursor: pointer;
+}
+
+.player > .player-time {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 12px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+}
+
+.player > .player-controls {
+    width: 100%;
+    height: 90px;
 }

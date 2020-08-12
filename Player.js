@@ -28,9 +28,8 @@ class Player extends EventTarget {
     }
 
     createTemplate () {
-        const node = document.createElement('div');
-        node.innerHTML = `
-            <div class="player ui-element">
+        return Utils.createEl(`
+            <div class="player">
                 <div class="player-controls">
                     <div class="player-play"></div>
                     <div class="player-back"></div>
@@ -42,12 +41,11 @@ class Player extends EventTarget {
                 </div>
                 <div class="player-track"></div>
             </div>       
-        `;
-        return node.firstElementChild;
+        `);
     }
 
-    render (container) {
-        container.appendChild(this.player);
+    render (root) {
+        root.appendChild(this.player);
     }
 
     play () {
@@ -80,5 +78,3 @@ class Player extends EventTarget {
     }
 
 }
-
-const player = new Player(240);

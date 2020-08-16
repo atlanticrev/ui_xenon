@@ -1,4 +1,4 @@
-class XenonCarousel {
+class XenonCarousel extends XenonBase {
 
     static get defaults () {
         return {
@@ -8,6 +8,7 @@ class XenonCarousel {
 
     // @todo Options: optional controls, optional swipe threshold, content of slide, touches
     constructor (options) {
+        super(options);
         this.options = Object.assign({}, XenonCarousel.defaults, options);
         this.el = this.createTemplate();
         this.slides = this.el.querySelectorAll('.slide');
@@ -25,6 +26,10 @@ class XenonCarousel {
             start: null,
             curr: null
         };
+        this.slideWidth = 100; // 100%
+        this.OUT_OF_SWIPE_AREA = this.slideWidth / 4;
+        this.LEFT_THRESHOLD = -1 * (this.slideWidth * (this.slides.length - 1)) - this.OUT_OF_SWIPE_AREA; // (-1) direction
+        this.RIGHT_THRESHOLD = 0 + this.OUT_OF_SWIPE_AREA;
 
         this.onMouseDown = this.onMouseDown.bind(this);
         this.onMouseMove = this.onMouseMove.bind(this);
@@ -36,14 +41,6 @@ class XenonCarousel {
         document.addEventListener('mouseup', this.onMouseUp);
         this.controls[0].addEventListener('click', this.prevSlide);
         this.controls[1].addEventListener('click', this.nextSlide);
-    }
-
-    render (root) {
-        root.appendChild(this.el);
-        this.slideWidth = 100; // 100%
-        this.OUT_OF_SWIPE_AREA = this.slideWidth / 4;
-        this.LEFT_THRESHOLD = -1 * (this.slideWidth * (this.slides.length - 1)) - this.OUT_OF_SWIPE_AREA; // (-1) direction
-        this.RIGHT_THRESHOLD = 0 + this.OUT_OF_SWIPE_AREA;
     }
 
     onMouseDown (e) {

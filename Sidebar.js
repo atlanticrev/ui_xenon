@@ -1,13 +1,14 @@
-class XenonSidebar {
+class XenonSidebar extends XenonBase {
 
     static get defaults () {
         return {
             isOpened: false,
-            dimmerOpacity: '0.5'
+            dimmerOpacity: '0.7'
         };
     }
 
     constructor (options) {
+        super(options);
         this.options = Object.assign({}, XenonSidebar.defaults, options);
         this.el = this.createTemplate();
         this.sidebar = this.el.querySelector('.sidebar');
@@ -24,6 +25,9 @@ class XenonSidebar {
             this.el.style.display = 'flex';
         }
         this._onTransitionEnd = this._onTransitionEnd.bind(this);
+        this.sidebarDimmer.addEventListener('click', () => {
+            this.toggle();
+        });
     }
 
     createTemplate () {
@@ -37,22 +41,16 @@ class XenonSidebar {
         `);
     }
 
-    render (root) {
-        root.appendChild(this.el);
-    }
-
-    destroy () {
-        this.el.parentElement.removeChild(this.el);
-    }
-
     toggle () {
         if (!this.isOpened) {
             this.el.style.display = 'flex';
             // @todo why rAF?
             requestAnimationFrame(() => {
-                this.sidebar.style.setProperty('--offset', '0');
-                this.sidebarDimmer.style.setProperty('--opacity', this.options.dimmerOpacity);
-                this.isOpened = true;
+                requestAnimationFrame(() => {
+                    this.sidebar.style.setProperty('--offset', '0');
+                    this.sidebarDimmer.style.setProperty('--opacity', this.options.dimmerOpacity);
+                    this.isOpened = true;
+                });
             })
         } else {
             this.sidebar.style.setProperty('--offset', '-100%');
@@ -63,7 +61,6 @@ class XenonSidebar {
     }
 
     _onTransitionEnd (e) {
-        console.log('end of transition', e.target);
         this.el.style.display = 'none';
         this.sidebar.removeEventListener('transitionend', this._onTransitionEnd, false);
     }

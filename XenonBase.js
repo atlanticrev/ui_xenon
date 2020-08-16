@@ -1,10 +1,11 @@
-class XenonBase {
+class XenonBase extends EventTarget {
 
     static get defaults () {
         return {};
     }
 
     constructor () {
+        super();
         this.el = null;
     }
 

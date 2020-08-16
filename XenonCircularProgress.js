@@ -1,4 +1,4 @@
-class XenonCircularProgress {
+class XenonCircularProgress extends XenonBase {
 
     static get defaults () {
         return {
@@ -11,13 +11,16 @@ class XenonCircularProgress {
     }
 
     constructor (options) {
+        super(options);
         this.options = Object.assign({}, XenonCircularProgress.defaults, options);
         this.el = this.createTemplate();
+        this.progressContent = this.el.querySelector('.progress-content');
         this.init();
         this.render();
     }
 
     init () {
+        this.progress = this.options.progress;
         for (let optionName of Object.keys(this.options)) {
             this.el.style.setProperty(`--${optionName}`, this.options[optionName]);
         }
@@ -30,21 +33,18 @@ class XenonCircularProgress {
                 <circle class="back"></circle>
                 <circle class="progress"></circle>
               </svg>
-              <div class="progress-content"></div>
+              <div class="progress-content">${this.options.progress}%</div>
             </div>      
         `);
     }
 
-    render (root = document.body) {
-        root.appendChild(this.el);
-    }
-
-    destroy () {
-        this.el.parentElement.removeChild(this.el);
-    }
-
+    /**
+     * @param {Number|String} percent
+     */
     setProgress (percent) {
-        this.el.style.setProperty(`--progress`, percent.toString());
+        this.progress = percent.toString();
+        this.progressContent.textContent = `${this.progress}%`;
+        this.el.style.setProperty(`--progress`, this.progress);
     }
 
 }

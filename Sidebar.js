@@ -1,4 +1,4 @@
-class Sidebar {
+class XenonSidebar {
 
     static get defaults () {
         return {
@@ -8,7 +8,7 @@ class Sidebar {
     }
 
     constructor (options) {
-        this.options = Object.assign({}, Sidebar.defaults, options);
+        this.options = Object.assign({}, XenonSidebar.defaults, options);
         this.el = this.createTemplate();
         this.sidebar = this.el.querySelector('.sidebar');
         this.sidebarDimmer = this.el.querySelector('.sidebar-dimmer');

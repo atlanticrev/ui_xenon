@@ -1,4 +1,4 @@
-class Player extends EventTarget {
+class XenonPlayer extends EventTarget {
 
     // @todo Перевод единиц измерения времени
     // @todo Заполнять прогресс в зависимости от типа источника анимации
@@ -9,21 +9,22 @@ class Player extends EventTarget {
         this.backControl = null;
         this.forwardControl = null;
 
-        this.player = this.createTemplate();
+        this.el = this.createTemplate();
         this.render(document.body);
 
-        this.progress = parseInt(window.getComputedStyle(this.player).getPropertyValue('--progress'));
+        this.progress = parseInt(window.getComputedStyle(this.el).getPropertyValue('--progress'));
         this.duration = duration;
 
-        this.playerRect = this.player.getBoundingClientRect();
-        this.timeFromBlock = this.player.querySelector('.from');
-        this.timeToBlock = this.player.querySelector('.to');
-        this.trackBlock = this.player.querySelector('.player-track');
+        this.elRect = this.el.getBoundingClientRect();
+        this.timeFromBlock = this.el.querySelector('.from');
+        this.timeToBlock = this.el.querySelector('.to');
+        this.trackBlock = this.el.querySelector('.player-track');
 
+        // @todo Не правильно работает нажатие
         this.trackBlock.addEventListener('click', (e) => {
-            const offset = e.clientX - this.playerRect.left;
-            this.progress = offset / this.playerRect.width * 100;
-            this.player.style.setProperty('--progress', `${this.progress}%`);
+            const offset = e.clientX - this.elRect.left;
+            this.progress = offset / this.elRect.width * 100;
+            this.el.style.setProperty('--progress', `${this.progress}%`);
         });
     }
 
@@ -44,8 +45,8 @@ class Player extends EventTarget {
         `);
     }
 
-    render (root) {
-        root.appendChild(this.player);
+    render (root = document.body) {
+        root.appendChild(this.el);
     }
 
     play () {
@@ -60,7 +61,7 @@ class Player extends EventTarget {
 
     reset () {
         this.progress = 0;
-        this.player.style.setProperty('--progress', `${this.progress}%`);
+        this.el.style.setProperty('--progress', `${this.progress}%`);
     }
 
     intervalTick () {
@@ -68,13 +69,13 @@ class Player extends EventTarget {
             clearInterval(this.interval);
         }
         const onePercent = this.duration / 100;
-        // const pxPerSec = this.playerRect.width / this.duration;
+        // const pxPerSec = this.elRect.width / this.duration;
         // const pxInOnePercent = pxPerSec * onePercent;
         // this.duration += pxPerSec;
         // this.progress += pxInOnePercent;
         // 0-100%
         this.progress = Math.max(0, Math.min(100, this.progress + onePercent));
-        this.player.style.setProperty('--progress', `${this.progress}%`);
+        this.el.style.setProperty('--progress', `${this.progress}%`);
     }
 
 }

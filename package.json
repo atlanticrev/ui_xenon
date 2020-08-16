@@ -1,19 +1,19 @@
 {
-    "name": "ui_kit",
+    "name": "xenon",
     "version": "1.0.0",
     "description": "",
-    "main": "Player.js",
+    "main": "script.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/atlanticrev/ui_kit.git"
+        "url": "git+https://github.com/atlanticrev/xenon.git"
     },
-    "author": "",
+    "author": "Max Tarasyuk",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/atlanticrev/ui_kit/issues"
+        "url": "https://github.com/atlanticrev/xenon/issues"
     },
-    "homepage": "https://github.com/atlanticrev/ui_kit#readme"
+    "homepage": "https://github.com/atlanticrev/xenon#readme"
 }

@@ -1,4 +1,6 @@
-class XenonCarousel extends XenonBase {
+import XenonBase from './XenonBase';
+
+export default class XenonCarousel extends XenonBase {
 
     static get defaults () {
         return {
@@ -76,7 +78,7 @@ class XenonCarousel extends XenonBase {
     }
 
     createTemplate () {
-        return Utils.createEl(`
+        return this.createEl(`
             <div class="viewport" draggable="false">
                 <div class="slides-container" draggable="false">
                     <div class="slide" draggable="false">1</div>

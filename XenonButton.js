@@ -1,4 +1,6 @@
-class XenonButton extends XenonBase {
+import XenonBase from './XenonBase';
+
+export default class XenonButton extends XenonBase {
 
     static get defaults () {
         return {};
@@ -18,7 +20,7 @@ class XenonButton extends XenonBase {
     }
 
     createTemplate () {
-        return Utils.createEl(`
+        return this.createEl(`
             <button class="activate-sidebar">
                 Button
             </button>

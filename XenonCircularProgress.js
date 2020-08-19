@@ -1,4 +1,6 @@
-class XenonCircularProgress extends XenonBase {
+import XenonBase from './XenonBase';
+
+export default class XenonCircularProgress extends XenonBase {
 
     static get defaults () {
         return {
@@ -27,7 +29,7 @@ class XenonCircularProgress extends XenonBase {
     }
 
     createTemplate () {
-        return Utils.createEl(`
+        return this.createEl(`
             <div id="container">
               <svg>
                 <circle class="back"></circle>

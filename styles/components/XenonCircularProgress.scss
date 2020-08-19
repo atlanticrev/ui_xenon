@@ -1,0 +1,72 @@
+#container {
+  --progressBarWidth: 10px;
+  --progressBackColor: var(--dark-gray);
+  --progressColor: var(--cyan);
+  --progress: 25;
+  --progressContainerSize: 150px;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: var(--progressContainerSize);
+  height: var(--progressContainerSize);
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+circle.progress {
+  --radius: calc(50% - var(--progressBarWidth) / 2);
+  --dashes: calc(var(--radius) * 3.14159 * 2);
+
+  r: var(--radius);
+  cx: 50%;
+  cy: 50%;
+
+  z-index: 2;
+  stroke-width: var(--progressBarWidth);
+  stroke: var(--progressColor);
+  fill: transparent;
+  stroke-dasharray: var(--dashes);
+  stroke-dashoffset: calc((100 - var(--progress)) * (var(--dashes) / 100));
+
+  transition: stroke-dashoffset .5s;
+}
+
+circle.back {
+  --radius: calc(50% - var(--progressBarWidth) / 2);
+  --dashes: calc(var(--radius) * 3.14159 * 2);
+
+  r: var(--radius);
+  cx: 50%;
+  cy: 50%;
+
+  z-index: 1;
+  stroke-width: var(--progressBarWidth);
+  stroke: var(--progressBackColor);
+  fill: transparent;
+  stroke-dasharray: var(--dashes);
+  stroke-dashoffset: 0;
+}
+
+.progress-content {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+}

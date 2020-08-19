@@ -1,4 +1,6 @@
-class XenonSidebar extends XenonBase {
+import XenonBase from './XenonBase';
+
+export default class XenonSidebar extends XenonBase {
 
     static get defaults () {
         return {
@@ -31,7 +33,7 @@ class XenonSidebar extends XenonBase {
     }
 
     createTemplate () {
-        return Utils.createEl(`
+        return this.createEl(`
             <div class="sidebar-container">
                 <div class="sidebar">
                     <h2 class="sidebar-name">Sidebar</h2>

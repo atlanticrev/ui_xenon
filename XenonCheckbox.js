@@ -1,4 +1,6 @@
-class XenonCheckBox extends EventTarget {
+import XenonBase from './XenonBase';
+
+export default class XenonCheckbox extends XenonBase {
 
     static get defaults () {
         return {
@@ -8,7 +10,7 @@ class XenonCheckBox extends EventTarget {
 
     constructor (options) {
         super();
-        this.options = Object.assign({}, XenonCheckBox.defaults, options);
+        this.options = Object.assign({}, XenonCheckbox.defaults, options);
         this.el = this.createTemplate();
         this.nativeInput = this.el.querySelector('input');
         this.init();
@@ -16,7 +18,7 @@ class XenonCheckBox extends EventTarget {
     }
 
     createTemplate () {
-        return Utils.createEl(`
+        return this.createEl(`
             <div class="checkbox-track ${this.options.checked ? 'checked' : ''}">
                 <div class="checkbox-wrapper">
                     <input type="checkbox" checked="${this.options.checked ? 'checked' : ''}"/>
@@ -38,10 +40,10 @@ class XenonCheckBox extends EventTarget {
         this.checked = !this.checked;
         if (this.checked) {
             this.nativeInput.checked = 'checked';
-            this.dispatchEvent(new CustomEvent('XenonCheckBox.EVENT_CHECKED', {detail: this.checked}));
+            this.dispatchEvent(new CustomEvent('XenonCheckbox.EVENT_CHECKED', {detail: this.checked}));
         } else {
             this.nativeInput.checked = '';
-            this.dispatchEvent(new CustomEvent('XenonCheckBox.EVENT_UNCHECKED', {detail: this.checked}));
+            this.dispatchEvent(new CustomEvent('XenonCheckbox.EVENT_UNCHECKED', {detail: this.checked}));
         }
         this.el.classList.toggle('checked');
     }

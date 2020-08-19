@@ -1,4 +1,6 @@
-class XenonPlayer extends EventTarget {
+import XenonBase from './XenonBase';
+
+export default class XenonPlayer extends XenonBase {
 
     // @todo Перевод единиц измерения времени
     // @todo Заполнять прогресс в зависимости от типа источника анимации
@@ -29,7 +31,7 @@ class XenonPlayer extends EventTarget {
     }
 
     createTemplate () {
-        return Utils.createEl(`
+        return this.createEl(`
             <div class="player">
                 <div class="player-controls">
                     <div class="player-play"></div>

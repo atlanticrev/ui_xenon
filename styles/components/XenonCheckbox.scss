@@ -1,0 +1,33 @@
+.checkbox-track {
+  --track-width: 40px;
+
+  width: var(--track-width);
+  height: 14px;
+  border-radius: 19px;
+  position: relative;
+  background-color: var(--black);
+
+  cursor: pointer;
+}
+
+.checkbox-track.checked > .checkbox-wrapper {
+  transform: translate(calc(var(--track-width) / 2), 0);
+}
+
+.checkbox-wrapper {
+  border: 3px solid var(--cyan);
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: -3px;
+  left: 0;
+  background-color: var(--dark-gray);
+
+  transition: transform .1s ease-out;
+  transform: translate(0, 0);
+}
+
+.checkbox-wrapper > input {
+  display: none;
+}

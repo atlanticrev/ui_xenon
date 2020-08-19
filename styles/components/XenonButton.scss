@@ -1,0 +1,13 @@
+.activate-sidebar {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--cyan);
+  font-size: 12px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}

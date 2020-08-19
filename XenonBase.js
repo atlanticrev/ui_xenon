@@ -1,4 +1,4 @@
-class XenonBase extends EventTarget {
+export default class XenonBase extends EventTarget {
 
     static get defaults () {
         return {};
@@ -12,6 +12,12 @@ class XenonBase extends EventTarget {
     init () {}
 
     createTemplate () {}
+
+    createEl (templateString) {
+        const el = document.createElement('div');
+        el.innerHTML = templateString.trim();
+        return el.firstElementChild;
+    }
 
     render (root = document.body) {
         root.appendChild(this.el);

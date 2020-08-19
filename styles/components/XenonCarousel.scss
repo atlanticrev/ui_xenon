@@ -1,0 +1,93 @@
+.viewport {
+  --viewport-width: 600px;
+  --viewport-height: 400px;
+
+  position: relative;
+  width: var(--viewport-width, 400px);
+  height: var(--viewport-height, 300px);
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slides-container {
+  --transform: 0;
+  --transition: 0.3s ease-out;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  cursor: grab;
+  transform: translate(var(--transform), 0);
+  transition: var(--transition);
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  flex: none;
+  width: 100%;
+  height: 100%;
+  background-color: bisque;
+  font-size: 140px;
+  color: var(--text);
+  font-weight: bold;
+  user-select: none;
+}
+
+.slide:last-child {
+  margin-right: 0;
+}
+
+.slide:nth-child(1) {
+  background-color: #1c252c;
+}
+
+.slide:nth-child(2) {
+  background-color: #212a33;
+}
+
+.slide:nth-child(3) {
+  background-color: #252e37;
+}
+
+.slide:nth-child(4) {
+  background-color: #305055;
+}
+
+.slide:nth-child(5) {
+  background-color: #4ee3c3;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: aliceblue;
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  cursor: pointer;
+}
+
+.controls.left {
+  left: 20px;
+  background: url("../../images/XenonCarousel/chevron.svg") no-repeat 22px 20px aliceblue;
+  background-size: 20px 20px;
+  transform: translateY(-50%) scale(-1, 1);
+}
+
+.controls.right {
+  right: 20px;
+  background: url("../../images/XenonCarousel/chevron.svg") no-repeat 22px 20px aliceblue;
+  background-size: 20px 20px;
+}

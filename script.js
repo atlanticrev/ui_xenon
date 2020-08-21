@@ -4,6 +4,7 @@ import XenonPlayer from './XenonPlayer.js';
 import XenonCircularProgress from './XenonCircularProgress.js';
 import XenonSidebar from './XenonSidebar.js';
 import XenonCarousel from './XenonCarousel.js';
+import XenonTable from './XenonTable.js';
 
 import './styles/index.scss';
 
@@ -14,7 +15,8 @@ const UIElements = {
     player: new XenonPlayer(240),
     circularProgress: new XenonCircularProgress({progress: 20}),
     sidebar: new XenonSidebar(),
-    carousel: new XenonCarousel()
+    carousel: new XenonCarousel(),
+    table: new XenonTable(),
 };
 
 for (let elName of Object.keys(UIElements)) {

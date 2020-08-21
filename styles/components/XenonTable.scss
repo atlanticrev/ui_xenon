@@ -1,0 +1,22 @@
+table {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 20px;
+  border: 1px solid black;
+}
+
+th {
+  background-color: lightgray;
+}
+
+.column-1 {
+  --width: 100px;
+  width: var(--width);
+}
+
+.column-2 {
+  --width: 250px;
+  width: var(--width);
+}

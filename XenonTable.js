@@ -33,11 +33,10 @@ export default class XenonTable extends XenonBase {
             const newRow = new XenonTableRow();
 
             for (let prop of Object.keys(this.data[i])) {
-                const newCell = new XenonTableCell({data: this.data[i][prop]});
-
                 const index = this.columns.findIndex(column => {
                     return column.name === prop;
                 });
+                const newCell = new XenonTableCell({data: this.data[i][prop], columnId: index});
                 this.columns[index].addCell(newCell);
 
                 newRow.addCell(newCell);
@@ -49,15 +48,16 @@ export default class XenonTable extends XenonBase {
     initEls () {
         this.el.innerHTML = '';
         for (let row of this.rows) {
-            const rowEl = document.createElement('tr');
-            rowEl.dataset['id'] = row.id;
-            rowEl.classList.add(`row-${row.id}`);
+            row.el = document.createElement('tr');
+            row.el.dataset['id'] = row.id;
+            row.el.classList.add(`row-${row.id}`);
             for (let cell of row.cells) {
-                const cellEl = document.createElement('td');
-                cellEl.textContent = cell.data;
-                rowEl.appendChild(cellEl);
+                cell.el = document.createElement('td');
+                cell.el.classList.add(`column-${cell.columnId}`);
+                cell.el.textContent = cell.data;
+                row.el.appendChild(cell.el);
             }
-            this.el.appendChild(rowEl);
+            this.el.appendChild(row.el);
         }
     }
 
@@ -68,6 +68,10 @@ export default class XenonTable extends XenonBase {
             row.cells[from].data = tmp;
         }
         this.initEls();
+    }
+
+    changeColumnWidth (index, width) {
+        this.columns[index].cells[0].el.style.setProperty('--width', width);
     }
 
 }
@@ -86,6 +90,7 @@ class XenonTableCell extends XenonBase {
     constructor(options) {
         super();
         this.options = Object.assign({}, XenonTableCell.defaults, options);
+        this.columnId = this.options.columnId;
         this.data = this.options.data;
     }
 

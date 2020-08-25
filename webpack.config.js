@@ -15,13 +15,13 @@ module.exports = {
                 test: /\.scss$/i,
                 use: [
                     {
-                        loader: MiniCssExtractPlugin.loader, // Moves CSS into separate .css file
+                        loader: MiniCssExtractPlugin.loader,
                         options: {
                             publicPath: path.resolve(__dirname, "dist")
                         },
                     },
                     "css-loader", // Translates CSS into CommonJS
-                    // "resolve-url-loader",
+                    "resolve-url-loader",
                     "sass-loader", // Compiles Sass to CSS
                 ],
             },

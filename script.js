@@ -21,8 +21,9 @@ const UIElements = {
     table: new XenonTable({data})
 };
 
-UIElements.table.switchColumns(2, 3);
-setTimeout(() => UIElements.table.switchColumns(2, 3), 2000);
+UIElements.table.changeColumnWidth(2, '300px');
+// UIElements.table.switchColumns(2, 3);
+// setTimeout(() => UIElements.table.switchColumns(2, 3), 2000);
 
 // for (let elName of Object.keys(UIElements)) {
 //     if (elName !== 'sidebar')

@@ -13,12 +13,32 @@ th {
   background-color: black;
 }
 
-.column-1 {
-  --width: 100px;
+td.column-1 {
+  --width: 250px;
   width: var(--width);
 }
 
-.column-2 {
+td.column-2 {
+  --width: 250px;
+  width: var(--width);
+}
+
+td.column-3 {
+  --width: 250px;
+  width: var(--width);
+}
+
+td.column-4 {
+  --width: 250px;
+  width: var(--width);
+}
+
+td.column-5 {
+  --width: 250px;
+  width: var(--width);
+}
+
+td.column-6 {
   --width: 250px;
   width: var(--width);
 }

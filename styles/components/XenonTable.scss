@@ -1,14 +1,16 @@
 table {
-  border: 1px solid black;
+  border: 1px solid white;
+  border-collapse: collapse;
 }
 
 th, td {
   padding: 20px;
-  border: 1px solid black;
+  border: 1px solid white;
+  color: white;
 }
 
 th {
-  background-color: lightgray;
+  background-color: black;
 }
 
 .column-1 {

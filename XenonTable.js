@@ -47,6 +47,7 @@ export default class XenonTable extends XenonBase {
     }
 
     initEls () {
+        this.el.innerHTML = '';
         for (let row of this.rows) {
             const rowEl = document.createElement('tr');
             rowEl.dataset['id'] = row.id;
@@ -61,7 +62,12 @@ export default class XenonTable extends XenonBase {
     }
 
     switchColumns (from, to) {
-
+        for (let row of this.rows) {
+            const tmp = row.cells[to].data;
+            row.cells[to].data = row.cells[from].data;
+            row.cells[from].data = tmp;
+        }
+        this.initEls();
     }
 
 }

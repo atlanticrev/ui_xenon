@@ -21,13 +21,13 @@
     "devDependencies": {
         "css-loader": "^4.2.1",
         "file-loader": "^6.0.0",
-        "mini-css-extract-plugin": "^0.10.0",
-        "resolve-url-loader": "^3.1.1",
+        "mini-css-extract-plugin": "^2.7.2",
+        "resolve-url-loader": "^5.0.0",
         "sass": "^1.26.10",
         "sass-loader": "^9.0.3",
         "style-loader": "^1.2.1",
-        "webpack": "^4.44.1",
-        "webpack-cli": "^3.3.12",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1",
         "webpack-dev-server": "^3.11.0"
     }
 }
